@@ -227,7 +227,7 @@ public class UidActivity extends AppCompatActivity {
                 OkHttpClient client = new OkHttpClient();
 
                 MediaType mediaType = MediaType.parse("application/x-www-form-urlencoded");
-                RequestBody body = RequestBody.create(mediaType, "hash=" + f_hash + "&salt=" + f_salt);
+                RequestBody body = RequestBody.create(mediaType, "hash=" + f_hash + "&salt=" + f_salt+ "&pin=" + pin);
                 Request request = new Request.Builder()
                         .url(AppStrings.hostWithSlash + "api/login/requestnewid.php")
                         .post(body)

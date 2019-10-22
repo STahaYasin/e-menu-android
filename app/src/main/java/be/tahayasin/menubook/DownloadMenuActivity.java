@@ -104,4 +104,7 @@ public class DownloadMenuActivity extends AppCompatActivity {
     private void downLoadImages(ImageSrc[] imageSrcs){
         ((TextView) findViewById(R.id.activity_download_menu_explanation_title)).setText(String.valueOf(imageSrcs.length) + " images");
     }
+    private void getMenuJson(){
+
+    }
 }
