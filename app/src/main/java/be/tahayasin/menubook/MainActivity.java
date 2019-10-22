@@ -1,23 +1,12 @@
 package be.tahayasin.menubook;
 
-import android.app.admin.DevicePolicyManager;
-import android.content.ComponentName;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
-import android.util.Log;
-import android.view.Window;
 import android.view.WindowManager;
-import android.widget.Button;
-import android.widget.FrameLayout;
-import android.widget.LinearLayout;
-import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
-
     MainActivityFragmentLanguages fragmentLanguages;
     Fragment fragmentMenu;
     MainActivityFragmentAllCategories fragmentAllCategories;
@@ -28,12 +17,9 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
-        //requestWindowFeature(Window.FEATURE_NO_TITLE);
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
 
         setTitle("Mevlana");
-
         setContentView(R.layout.activity_main);
 
         menus = MenuHandler.getMenu(this);
