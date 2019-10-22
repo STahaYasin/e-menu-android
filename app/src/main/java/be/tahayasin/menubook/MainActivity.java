@@ -1,5 +1,6 @@
 package be.tahayasin.menubook;
 
+import android.content.Intent;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
@@ -64,7 +65,13 @@ public class MainActivity extends AppCompatActivity {
         setFragment(fragmentAllCategories);
     }
     public void OnCategorySelected(Menu menu, int index){
-        setupFragmentCategories(menu, index);
+        //setupFragmentCategories(menu, index);
+
+        MenuHolderSingleton holder = MenuHolderSingleton.getInstance();
+        holder.putMenu(menu);
+        holder.setSelectedCategoryIndex(index);
+
+        startActivity(new Intent(this, ProductsActivity.class));
     }
     private void setupFragmentCategories(Menu menu, int index){
         fragmentCategories = new MainActivityFragmentCategories();
