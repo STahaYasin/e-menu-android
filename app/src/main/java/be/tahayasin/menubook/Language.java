@@ -6,41 +6,46 @@ import com.google.gson.annotations.SerializedName;
 public class Language {
     @SerializedName("id")
     @Expose
-    private int id;
-
-    public int getId() {
-        return id;
-    }
-
-    @SerializedName("code")
-    @Expose
-    private String code;
-
-    public String getCode() {
-        return code;
-    }
-
+    private Integer id;
     @SerializedName("name")
     @Expose
     private String name;
+    @SerializedName("code")
+    @Expose
+    private String code;
+    @SerializedName("source_path")
+    @Expose
+    private String sourcePath;
+
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
+    }
 
     public String getName() {
         return name;
     }
 
-    @SerializedName("imgsrc")
-    @Expose
-    private String imgsrc;
-
-    public String getImgsrc() {
-        return imgsrc;
+    public void setName(String name) {
+        this.name = name;
     }
 
-    @SerializedName("supported_lang")
-    @Expose
-    private boolean supported_lang;
+    public String getCode() {
+        return code;
+    }
 
-    public boolean isSupported_lang() {
-        return supported_lang;
+    public void setCode(String code) {
+        this.code = code;
+    }
+
+    public String getSourcePath() {
+        return sourcePath;
+    }
+
+    public void setSourcePath(String sourcePath) {
+        this.sourcePath = sourcePath;
     }
 }

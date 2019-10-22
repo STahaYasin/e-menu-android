@@ -59,4 +59,11 @@ public class Category {
     public String getImgsrc_in_main_lang() {
         return imgsrc_in_main_lang;
     }
+    @SerializedName("products")
+    @Expose
+    private Product[] products;
+
+    public  Product[] getProducts(){return products;}
+
+
 }

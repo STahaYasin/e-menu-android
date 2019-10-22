@@ -11,6 +11,7 @@ public class MainActivity extends AppCompatActivity {
     Fragment fragmentMenu;
     MainActivityFragmentAllCategories fragmentAllCategories;
     MainActivityFragmentCategories fragmentCategories;
+    MainActivityFragmentProduct fragmentProduct;
 
     private Menu[] menus;
 
@@ -50,7 +51,7 @@ public class MainActivity extends AppCompatActivity {
             setupFragmentAllCategories(menu);
         }
         else{
-            setupFragmentCategories(menu);
+            setupFragmentCategories(menu, 0);
         }
     }
     private void resetLanguages(){
@@ -62,10 +63,20 @@ public class MainActivity extends AppCompatActivity {
 
         setFragment(fragmentAllCategories);
     }
-    private void setupFragmentCategories(Menu menu){
+    public void OnCategorySelected(Menu menu, int index){
+        setupFragmentCategories(menu, index);
+    }
+    private void setupFragmentCategories(Menu menu, int index){
         fragmentCategories = new MainActivityFragmentCategories();
-        fragmentCategories.Setup(this, this, menu);
+        fragmentCategories.Setup(this, this, menu, index);
 
         setFragment(fragmentCategories);
+    }
+
+    public void OnProductSelected(Category category, int position) {
+        fragmentProduct = new MainActivityFragmentProduct();
+        fragmentProduct.Setup(this,this,category,position);
+
+        setFragment(fragmentProduct);
     }
 }

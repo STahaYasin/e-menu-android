@@ -9,22 +9,19 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
-public class MainActivityCategoryFragment extends Fragment {
-
+public class MainActivityProductFragment  extends Fragment {
     private Context context;
-    private Category category;
+    private Product product;
     private MainActivity mainActivity;
 
-    public MainActivityCategoryFragment() {
+    public MainActivityProductFragment() {
         // Required empty public constructor
     }
-
-    public void Setup(Context context, MainActivity mainActivity, Category category){
+    public void Setup(Context context, MainActivity mainActivity, Product product) {
         this.context = context;
-        this.category = category;
+        this.product = product;
         this.mainActivity = mainActivity;
     }
-
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -32,12 +29,10 @@ public class MainActivityCategoryFragment extends Fragment {
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        View v = inflater.inflate(R.layout.activity_main_category_fragment, container, false);
+        View v = inflater.inflate(R.layout.activity_main_fragment_product, container, false);
 
-        ((TextView) v.findViewById(R.id.category_name)).setText(category.getName());
-        RecyclerView rv = v.findViewById(R.id.recycler_products);
+        ((TextView) v.findViewById(R.id.producttitle)).setText(product.getName());
 
-        ProductsAdapterManager.Setup(context, mainActivity, rv, category);
 
         return v;
     }

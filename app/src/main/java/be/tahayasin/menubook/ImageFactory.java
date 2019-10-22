@@ -27,6 +27,7 @@ public class ImageFactory {
         }
     }
     public static Bitmap Load(Context context, String name){
+        if(true) return null;
         FileInputStream fileInputStream;
         Bitmap bitmap = null;
         try{

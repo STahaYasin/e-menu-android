@@ -41,7 +41,7 @@ public class LanguagesAdapter_Model_1 extends RecyclerView.Adapter<LanguagesAdap
             holder.iv_img.setImageBitmap(null);
         }*/
 
-        holder.iv_img.setImageBitmap(ImageFactory.Load(context, ImageFactory.getMediumName(menu.getLanguage().getImgsrc())));
+        holder.iv_img.setImageBitmap(ImageFactory.Load(context, ImageFactory.getMediumName(menu.getLanguage().getSourcePath())));
 
         holder.ll.setOnClickListener(new View.OnClickListener() {
             @Override
