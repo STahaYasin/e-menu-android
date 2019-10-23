@@ -26,7 +26,7 @@ public class DetailActivity extends AppCompatActivity {
         category = holder.getCategory();
 
         FragmentManager fragmentManager = getSupportFragmentManager();
-        sectionPagerAdapter = new SectionPagerAdapter(fragmentManager, context, mainActivity, category);
+        sectionPagerAdapter = new SectionPagerAdapter(fragmentManager, context, category);
 
         viewPager = findViewById(R.id.activity_main_fragment_categories_container);
         viewPager.setAdapter(sectionPagerAdapter);
@@ -36,7 +36,7 @@ public class DetailActivity extends AppCompatActivity {
 
         private Fragment[] fragments;
 
-        public SectionPagerAdapter(FragmentManager fm, Context context, MainActivity mainActivity, Category category) {
+        public SectionPagerAdapter(FragmentManager fm, Context context, Category category) {
             super(fm);
 
             fragments = new Fragment[3];
