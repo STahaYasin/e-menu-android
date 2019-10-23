@@ -1,7 +1,6 @@
 package be.tahayasin.menubook;
 
 import android.content.Context;
-import android.content.Intent;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
@@ -9,55 +8,43 @@ import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
-public class ProductsActivity extends AppCompatActivity implements OnProductClickListener {
+public class DetailActivity extends AppCompatActivity {
 
     private Context context;
     private MainActivity mainActivity;
-    private Menu menu;
-    private Integer categoryIndex;
-
+    private Category category;
+    private Integer position;
     ViewPager viewPager;
     SectionPagerAdapter sectionPagerAdapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_products);
+        setContentView(R.layout.activity_detail);
 
-        this.context = this;
         MenuHolderSingleton holder = MenuHolderSingleton.getInstance();
-        this.menu = holder.getMenu();
-        this.categoryIndex = holder.getSelectedCategoryIndex();
+        category = holder.getCategory();
 
         FragmentManager fragmentManager = getSupportFragmentManager();
-        sectionPagerAdapter = new SectionPagerAdapter(fragmentManager, context, this, menu);
+        sectionPagerAdapter = new SectionPagerAdapter(fragmentManager, context, mainActivity, category);
 
         viewPager = findViewById(R.id.activity_main_fragment_categories_container);
         viewPager.setAdapter(sectionPagerAdapter);
-    }
-
-    @Override
-    public void OnClick(Category category, int position) {
-        MenuHolderSingleton holderSingleton = MenuHolderSingleton.getInstance();
-        holderSingleton.setCategory(category);
-        holderSingleton.setSelectedProductIndex(position);
-
-        startActivity(new Intent(this, DetailActivity.class));
     }
 
     public class SectionPagerAdapter extends FragmentPagerAdapter {
 
         private Fragment[] fragments;
 
-        public SectionPagerAdapter(FragmentManager fm, Context context, OnProductClickListener clickListener, Menu menu) {
+        public SectionPagerAdapter(FragmentManager fm, Context context, MainActivity mainActivity, Category category) {
             super(fm);
 
             fragments = new Fragment[3];
 
-            fragments = new MainActivityCategoryFragment[menu.getCategories().length];
+            fragments = new MainActivityProductFragment[category.getProducts().length];
             for(int i = 0; i < fragments.length; i ++){
-                MainActivityCategoryFragment fr = new MainActivityCategoryFragment();
-                fr.Setup(context, mainActivity, menu.getCategories()[i]);
+                MainActivityProductFragment fr = new MainActivityProductFragment();
+                fr.Setup(context, mainActivity, category.getProducts()[i]);
                 fragments[i] = fr;
             }
         }

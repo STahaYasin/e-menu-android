@@ -2,6 +2,7 @@ package be.tahayasin.menubook;
 
 public class MenuHolderSingleton {
     private Menu menu;
+    private Category category;
     private int selectedCategoryIndex;
     private int selectedProductIndex;
 
@@ -38,5 +39,13 @@ public class MenuHolderSingleton {
 
     public void setSelectedProductIndex(int selectedProductIndex) {
         this.selectedProductIndex = selectedProductIndex;
+    }
+
+    public void setCategory(Category category) {
+        this.category = category;
+    }
+
+    public Category getCategory() {
+        return category;
     }
 }
