@@ -18,7 +18,7 @@ public class MenuHolderSingleton {
         return instance;
     }
 
-    public void putMenu(Menu menu){
+    public void setMenu(Menu menu){
         this.menu = menu;
     }
     public Menu getMenu(){

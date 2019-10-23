@@ -66,7 +66,7 @@ public class MainActivityFragmentCategories extends Fragment {
             fragments = new MainActivityCategoryFragment[menu.getCategories().length];
             for(int i = 0; i < fragments.length; i ++){
                 MainActivityCategoryFragment fr = new MainActivityCategoryFragment();
-                fr.Setup(context, mainActivity, menu.getCategories()[i]);
+                //fr.Setup(context, mainActivity, menu.getCategories()[i]);
                 fragments[i] = fr;
             }
         }

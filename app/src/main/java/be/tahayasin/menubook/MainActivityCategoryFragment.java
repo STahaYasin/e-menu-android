@@ -12,16 +12,16 @@ import android.widget.TextView;
 public class MainActivityCategoryFragment extends Fragment {
 
     private Context context;
-    private Category category;
-    private OnProductClickListener clickListener;
+    private Category[] categories;
+    private OnCategoryClickListener clickListener;
 
     public MainActivityCategoryFragment() {
         // Required empty public constructor
     }
 
-    public void Setup(Context context, OnProductClickListener clickListener, Category category){
+    public void Setup(Context context, OnCategoryClickListener clickListener, Category[] categories){
         this.context = context;
-        this.category = category;
+        this.categories = categories;
         this.clickListener = clickListener;
     }
 
@@ -34,10 +34,9 @@ public class MainActivityCategoryFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View v = inflater.inflate(R.layout.activity_main_category_fragment, container, false);
 
-        ((TextView) v.findViewById(R.id.category_name)).setText(category.getName());
         RecyclerView rv = v.findViewById(R.id.recycler_products);
 
-        ProductsAdapterManager.Setup(context, clickListener, rv, category);
+        CategoriesAdapterManager.Setup(context, clickListener, rv, categories);
 
         return v;
     }

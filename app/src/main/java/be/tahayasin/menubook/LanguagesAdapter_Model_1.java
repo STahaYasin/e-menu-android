@@ -13,12 +13,12 @@ import android.widget.TextView;
 public class LanguagesAdapter_Model_1 extends RecyclerView.Adapter<LanguagesAdapter_Model_1.ItemHolder> {
 
     private Context context;
-    private MainActivity mainActivity;
+    private OnLanguageSelectListener languageSelectListener;
     private Menu[] menus;
 
-    public LanguagesAdapter_Model_1(Context context, MainActivity mainActivity, Menu[] menus){
+    public LanguagesAdapter_Model_1(Context context, OnLanguageSelectListener languageSelectListener, Menu[] menus){
         this.context = context;
-        this.mainActivity = mainActivity;
+        this.languageSelectListener = languageSelectListener;
         this.menus = menus;
     }
 
@@ -46,7 +46,7 @@ public class LanguagesAdapter_Model_1 extends RecyclerView.Adapter<LanguagesAdap
         holder.ll.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                mainActivity.OnLanguageSelected(menu);
+                languageSelectListener.OnLanguageSelected(menu);
             }
         });
     }

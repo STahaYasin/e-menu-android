@@ -5,9 +5,11 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.RecyclerView;
+import android.view.View;
 import android.view.WindowManager;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements OnLanguageSelectListener {
     MainActivityFragmentLanguages fragmentLanguages;
     Fragment fragmentMenu;
     MainActivityFragmentAllCategories fragmentAllCategories;
@@ -26,64 +28,15 @@ public class MainActivity extends AppCompatActivity {
 
         menus = MenuHandler.getMenu(this);
 
-        setFragmentLanguages();
-    }
-    private void setFragmentLanguages(){
-        if(fragmentLanguages == null){
-            makeFragmentLanguages();
-        }
+        RecyclerView rv = findViewById(R.id.activity_main_languages_rv);
 
-        setFragment(fragmentLanguages);
-    }
-    private void makeFragmentLanguages(){
-        fragmentLanguages = new MainActivityFragmentLanguages();
-        fragmentLanguages.Setup(this, this, menus);
-    }
-    private void setFragment(Fragment fragment){
-        FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
-        fragmentTransaction.replace(R.id.activity_main_container, fragment);
-        fragmentTransaction.commit();
+        LanguagesAdapterManager.SetupRv(this, this, rv, menus);
     }
 
     public void OnLanguageSelected(Menu menu){
-        resetLanguages();
+        MenuHolderSingleton holderSingleton = MenuHolderSingleton.getInstance();
+        holderSingleton.setMenu(menu);
 
-        if(menu.isShow_categories()){
-            setupFragmentAllCategories(menu);
-        }
-        else{
-            setupFragmentCategories(menu, 0);
-        }
-    }
-    private void resetLanguages(){
-        fragmentLanguages = null;
-    }
-    private void setupFragmentAllCategories(Menu menu){
-        fragmentAllCategories = new MainActivityFragmentAllCategories();
-        fragmentAllCategories.Setup(this, this, menu);
-
-        setFragment(fragmentAllCategories);
-    }
-    public void OnCategorySelected(Menu menu, int index){
-        //setupFragmentCategories(menu, index);
-
-        MenuHolderSingleton holder = MenuHolderSingleton.getInstance();
-        holder.putMenu(menu);
-        holder.setSelectedCategoryIndex(index);
-
-        startActivity(new Intent(this, ProductsActivity.class));
-    }
-    private void setupFragmentCategories(Menu menu, int index){
-        fragmentCategories = new MainActivityFragmentCategories();
-        fragmentCategories.Setup(this, this, menu, index);
-
-        setFragment(fragmentCategories);
-    }
-
-    public void OnProductSelected(Category category, int position) {
-        fragmentProduct = new MainActivityFragmentProduct();
-        fragmentProduct.Setup(this,this,category,position);
-
-        setFragment(fragmentProduct);
+        startActivity(new Intent(this, CategoriesActivity.class));
     }
 }

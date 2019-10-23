@@ -8,15 +8,15 @@ import android.support.v7.widget.RecyclerView;
 
 public class LanguagesAdapterManager {
 
-    public static void SetupRv(Context context, MainActivity mainActivity, RecyclerView recyclerView, Menu[] menus){
-        SetupRv_1(context, mainActivity, recyclerView, menus); // TODO first check to know how to setup the rv
+    public static void SetupRv(Context context, OnLanguageSelectListener languageSelectListener, RecyclerView recyclerView, Menu[] menus){
+        SetupRv_1(context, languageSelectListener, recyclerView, menus); // TODO first check to know how to setup the rv
     }
-    private static void SetupRv_1(Context context, MainActivity mainActivity, RecyclerView recyclerView, Menu[] menus){
+    private static void SetupRv_1(Context context, OnLanguageSelectListener languageSelectListener, RecyclerView recyclerView, Menu[] menus){
         if(recyclerView == null) return;
 
         //recyclerView.setLayoutManager(new GridLayoutManager(context, 3, GridLayoutManager.VERTICAL, false));
         recyclerView.setLayoutManager(new LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false));
-        recyclerView.setAdapter(new LanguagesAdapter_Model_1(context, mainActivity, menus));
+        recyclerView.setAdapter(new LanguagesAdapter_Model_1(context, languageSelectListener, menus));
     }
 
     public static Integer getSupportedLangImage(int id){

@@ -37,7 +37,7 @@ public class MainActivityFragmentAllCategories extends Fragment {
         View v = inflater.inflate(R.layout.activity_main_fragment_all_categories, container, false);
 
         RecyclerView rv = v.findViewById(R.id.activity_main_fragment_all_categories_rv);
-        CategoriesAdapterManager.Setup(context, mainActivity, rv, menu);
+        //CategoriesAdapterManager.Setup(context, mainActivity, rv, menu);
 
         return v;
     }

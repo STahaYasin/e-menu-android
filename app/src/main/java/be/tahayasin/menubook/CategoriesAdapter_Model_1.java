@@ -13,13 +13,13 @@ import android.widget.TextView;
 public class CategoriesAdapter_Model_1 extends RecyclerView.Adapter<CategoriesAdapter_Model_1.ItemHolder> {
 
     private Context context;
-    private MainActivity mainActivity;
-    private Menu menu;
+    private OnCategoryClickListener clickListener;
+    private Category[] categories;
 
-    public CategoriesAdapter_Model_1(Context context, MainActivity mainActivity, Menu menu){
+    public CategoriesAdapter_Model_1(Context context, OnCategoryClickListener clickListener, Category[] categories){
         this.context = context;
-        this.mainActivity = mainActivity;
-        this.menu = menu;
+        this.clickListener = clickListener;
+        this.categories = categories;
     }
 
     @NonNull
@@ -30,31 +30,31 @@ public class CategoriesAdapter_Model_1 extends RecyclerView.Adapter<CategoriesAd
 
     @Override
     public void onBindViewHolder(@NonNull ItemHolder holder, int position) {
-        holder.title.setText(menu.getCategories()[position].getName());
+        holder.title.setText(categories[position].getName());
 
         final ImageView fimageview = holder.imageView;
         final Integer fpos = position;
         Thread t = new Thread(new Runnable() {
             @Override
             public void run() {
-                final Bitmap bitmap = ImageFactory.Load(context, menu.getCategories()[fpos].getImgsrc());
+                final Bitmap bitmap = ImageFactory.Load(context, categories[fpos].getImgsrc());
             }
         });
         t.setPriority(Thread.MAX_PRIORITY);
         t.start();
 
-        fimageview.setImageBitmap(ImageFactory.Load(context, menu.getCategories()[position].getImgsrc()));
+        fimageview.setImageBitmap(ImageFactory.Load(context,categories[position].getImgsrc()));
         fimageview.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                mainActivity.OnCategorySelected(menu,fpos);
+                clickListener.OnCategoryClick(categories,fpos);
             }
         });
     }
 
     @Override
     public int getItemCount() {
-        return menu != null & menu.getCategories() != null? menu.getCategories().length: 0;
+        return categories != null & categories != null? categories.length: 0;
     }
 
     public class ItemHolder extends RecyclerView.ViewHolder{

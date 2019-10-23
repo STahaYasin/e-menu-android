@@ -54,10 +54,10 @@ public class ProductsActivity extends AppCompatActivity implements OnProductClic
 
             fragments = new Fragment[3];
 
-            fragments = new MainActivityCategoryFragment[menu.getCategories().length];
+            fragments = new MainActivityProductFragment[menu.getCategories().length];
             for(int i = 0; i < fragments.length; i ++){
-                MainActivityCategoryFragment fr = new MainActivityCategoryFragment();
-                fr.Setup(context, mainActivity, menu.getCategories()[i]);
+                MainActivityProductFragment fr = new MainActivityProductFragment();
+                fr.Setup(context, clickListener, menu.getCategories()[i]);
                 fragments[i] = fr;
             }
         }

@@ -52,7 +52,7 @@ public class MainActivityFragmentProduct extends Fragment {
             fragments = new MainActivityProductFragment[category.getProducts().length];
             for(int i = 0; i < fragments.length; i ++){
                 MainActivityProductFragment fr = new MainActivityProductFragment();
-                fr.Setup(context, mainActivity, category.getProducts()[i]);
+                //fr.Setup(context, mainActivity, category.getProducts()[i]);
                 fragments[i] = fr;
             }
         }
