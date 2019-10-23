@@ -12,12 +12,12 @@ import android.widget.TextView;
 
 class ProductAdapter_Model_1  extends RecyclerView.Adapter<ProductAdapter_Model_1.ItemHolder> {
     private Context context;
-    private MainActivity mainActivity;
+    private OnProductClickListener clickListener;
     private Category category;
 
-    public ProductAdapter_Model_1(Context context, MainActivity mainActivity, Category category){
+    public ProductAdapter_Model_1(Context context, OnProductClickListener clickListener, Category category){
         this.context = context;
-        this.mainActivity = mainActivity;
+        this.clickListener = clickListener;
         this.category = category;
     }
 
@@ -48,7 +48,7 @@ class ProductAdapter_Model_1  extends RecyclerView.Adapter<ProductAdapter_Model_
         fimageview.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                mainActivity.OnProductSelected(category, position);
+                clickListener.OnClick(category, position);
             }
         });
     }

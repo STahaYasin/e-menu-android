@@ -13,16 +13,16 @@ public class MainActivityCategoryFragment extends Fragment {
 
     private Context context;
     private Category category;
-    private MainActivity mainActivity;
+    private OnProductClickListener clickListener;
 
     public MainActivityCategoryFragment() {
         // Required empty public constructor
     }
 
-    public void Setup(Context context, MainActivity mainActivity, Category category){
+    public void Setup(Context context, OnProductClickListener clickListener, Category category){
         this.context = context;
         this.category = category;
-        this.mainActivity = mainActivity;
+        this.clickListener = clickListener;
     }
 
     @Override
@@ -37,7 +37,7 @@ public class MainActivityCategoryFragment extends Fragment {
         ((TextView) v.findViewById(R.id.category_name)).setText(category.getName());
         RecyclerView rv = v.findViewById(R.id.recycler_products);
 
-        ProductsAdapterManager.Setup(context, mainActivity, rv, category);
+        ProductsAdapterManager.Setup(context, clickListener, rv, category);
 
         return v;
     }
