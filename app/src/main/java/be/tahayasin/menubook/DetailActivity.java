@@ -7,15 +7,15 @@ import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 
-public class DetailActivity extends AppCompatActivity {
+public class DetailActivity extends AppCompatActivity implements IProductOptionsListener {
 
     private Context context;
     private MainActivity mainActivity;
     private Category category;
-    private Integer position;
-    ViewPager viewPager;
-    SectionPagerAdapter sectionPagerAdapter;
+    private Integer index;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -23,40 +23,12 @@ public class DetailActivity extends AppCompatActivity {
         setContentView(R.layout.activity_detail);
 
         MenuHolderSingleton holder = MenuHolderSingleton.getInstance();
+        index = holder.getSelectedProductIndex();
         category = holder.getCategory();
 
-        FragmentManager fragmentManager = getSupportFragmentManager();
-        sectionPagerAdapter = new SectionPagerAdapter(fragmentManager, context, category);
-
-        viewPager = findViewById(R.id.activity_main_fragment_categories_container);
-        viewPager.setAdapter(sectionPagerAdapter);
-    }
-
-    public class SectionPagerAdapter extends FragmentPagerAdapter {
-
-        private Fragment[] fragments;
-
-        public SectionPagerAdapter(FragmentManager fm, Context context, Category category) {
-            super(fm);
-
-            fragments = new Fragment[3];
-
-            fragments = new MainActivityProductFragment[category.getProducts().length];
-            for(int i = 0; i < fragments.length; i ++){
-                MainActivityProductFragment fr = new MainActivityProductFragment();
-                fr.Setup(context, mainActivity, category.getProducts()[i]);
-                fragments[i] = fr;
-            }
-        }
-
-        @Override
-        public Fragment getItem(int position) {
-            return fragments[position];
-        }
-
-        @Override
-        public int getCount() {
-            return fragments.length;
-        }
+        RecyclerView rv = findViewById(R.id.rv_detail_activity);
+        rv.setLayoutManager(new LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false));
+        rv.setAdapter(new ProductDetailAdapter(this, category.getProducts()));
+        rv.smoothScrollToPosition(index);
     }
 }
