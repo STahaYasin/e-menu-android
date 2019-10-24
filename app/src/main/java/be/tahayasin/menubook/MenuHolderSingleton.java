@@ -1,5 +1,8 @@
 package be.tahayasin.menubook;
 
+import be.tahayasin.menubook.Models.Category;
+import be.tahayasin.menubook.Models.Menu;
+
 public class MenuHolderSingleton {
     private Menu menu;
     private Category category;

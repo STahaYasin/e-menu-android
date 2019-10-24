@@ -13,11 +13,13 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme.NoActionBar">
-        <activity android:name=".CategoriesActivity"></activity>
-        <activity android:name=".DetailActivity" />
-        <activity android:name=".ProductsActivity" />
+        <activity android:name=".Activities.Receipt.ReceiptActivity"></activity>
+        <activity android:name=".Activities.Order.OrderActivity" />
+        <activity android:name=".Activities.Catagory.CategoriesActivity" />
+        <activity android:name=".Activities.Detail.DetailActivity" />
+        <activity android:name=".Activities.Product.ProductsActivity" />
         <activity
-            android:name=".SplashActivity"
+            android:name=".Activities.Splash.SplashActivity"
             android:theme="@style/FullScreenTheme">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -25,12 +27,8 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".MainActivitySettings" />
-        <activity android:name=".UidActivity" />
-        <activity android:name=".SettingsActivity" />
-        <activity android:name=".AskAuthorityActivity" />
-        <activity android:name=".DownloadMenuActivity" />
-        <activity android:name=".MainActivity" />
+        <activity android:name=".Activities.MainActivity.MainActivitySettings" />
+        <activity android:name=".Activities.MainActivity.MainActivity" />
     </application>
 
 </manifest>

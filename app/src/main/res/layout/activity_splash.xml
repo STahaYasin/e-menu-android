@@ -8,7 +8,7 @@
     android:orientation="vertical"
     android:id="@+id/splashrelative"
     android:background="@color/colorPrimary"
-    tools:context=".SplashActivity">
+    tools:context=".Activities.Splash.SplashActivity">
 
     <LinearLayout
         android:layout_width="match_parent"

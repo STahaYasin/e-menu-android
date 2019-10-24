@@ -7,7 +7,7 @@
     android:layout_height="match_parent"
     android:background="@drawable/bluebackground"
     android:gravity="bottom"
-    tools:context=".SplashActivitySettings">
+    tools:context=".Activities.SplashActivitySettings">
 
     <TextView
         android:layout_width="match_parent"
