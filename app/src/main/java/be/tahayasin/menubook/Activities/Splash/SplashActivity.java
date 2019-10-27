@@ -27,6 +27,7 @@ import java.util.Random;
 import be.tahayasin.menubook.Activities.MainActivity.MainActivity;
 import be.tahayasin.menubook.AeSimpleSHA1;
 import be.tahayasin.menubook.Constants.AppStrings;
+import be.tahayasin.menubook.Constants.MyHttp;
 import be.tahayasin.menubook.Handlers.HttpPostHandler;
 import be.tahayasin.menubook.Handlers.MenuHandler;
 import be.tahayasin.menubook.Models.NameValuePair;
@@ -93,41 +94,22 @@ public class SplashActivity extends AppCompatActivity {
             @Override
             public void run() {
 
-                final HttpPostHandler http = new HttpPostHandler(context, AppStrings.hostWithSlash + "archief/api/login/getsaltandsgallengefortablet.php");
-                http.AddGetNameValuePair(new NameValuePair("tablet_id", String.valueOf(SharedPrefencesManager.getUid(context))));
-
-                http.Excecute();
-
-                ResultWithSalt res;
-
-                try {
-                    res = new Gson().fromJson(http.getResult(), ResultWithSalt.class);
-                }
-                catch (Exception e){
-                    res = new ResultWithSalt(false, e.getMessage(), 2, null);
-                }
-
-                /*OkHttpClient client = new OkHttpClient();
+                OkHttpClient client = new OkHttpClient();
 
                 Request request = new Request.Builder()
-                        .url(AppStrings.hostWithSlash + "api/getsaltandsgallengefortablet.php?tablet_id=" + uid)
+                        .url(MyHttp.API_SALT + uid)
                         .get()
-                        .addHeader("Content-Type", "application/x-www-form-urlencoded")
-                        .addHeader("Cache-Control", "no-cache")
-                        .addHeader("Postman-Token", "20c81bb2-98c5-4cf3-b3ef-9dc741b33219")
                         .build();
 
                 ResultWithSalt res;
+
                 try {
                     Response response = client.newCall(request).execute();
                     res = new Gson().fromJson(response.body().string(), ResultWithSalt.class);
+                } catch (IOException e) {
+                    e.printStackTrace();
+                    res = new ResultWithSalt(false, e.getMessage(), 2, null);
                 }
-                catch (IOException i){
-                    res = new ResultWithSalt(false, context.getResources().getString(R.string.error_network), 2, null);
-                }
-                catch (Exception e){
-                    res = new ResultWithSalt(false, e.getMessage(), 0, null);
-                }*/
 
                 final ResultWithSalt result = res;
 
@@ -138,8 +120,8 @@ public class SplashActivity extends AppCompatActivity {
                             checkHash(result);
                         }
                         else{
-                            ResCodeHandler.DeleteUidAndPinIfNeeded(context, result.getCode());
-                            checkConnection();
+                            //ResCodeHandler.DeleteUidAndPinIfNeeded(context, result.getCode());
+                            //checkConnection();
                         }
                     }
                 });
@@ -172,13 +154,11 @@ public class SplashActivity extends AppCompatActivity {
                 OkHttpClient client = new OkHttpClient();
 
                 MediaType mediaType = MediaType.parse("application/x-www-form-urlencoded");
-                RequestBody body = RequestBody.create(mediaType, "id=" + id + "&hash=" + hash + "&session_id=" + data.getData().getSession_id());
+                RequestBody body = RequestBody.create(mediaType, "session_id=" + data.getData().getSession_id() + "&hash=" + hash);
                 Request request = new Request.Builder()
-                        .url(AppStrings.hostWithSlash + "archief/api/login/loginfortablet.php")
+                        .url(MyHttp.API_LOGIN)
                         .post(body)
-                        .addHeader("Content-Type", "application/x-www-form-urlencoded")
-                        .addHeader("Cache-Control", "no-cache")
-                        .addHeader("Postman-Token", "20c81bb2-98c5-4cf3-b3ef-9dc741b33219")
+                        .addHeader("content-type", "application/x-www-form-urlencoded")
                         .build();
 
                 ResultWithToken res;
@@ -186,11 +166,8 @@ public class SplashActivity extends AppCompatActivity {
                 try {
                     Response response = client.newCall(request).execute();
                     res = new Gson().fromJson(response.body().string(), ResultWithToken.class);
-                }
-                catch (IOException i){
-                    res = new ResultWithToken(false, context.getResources().getString(R.string.error_network), 2, null);
-                }
-                catch (Exception e){
+                } catch (Exception e) {
+                    e.printStackTrace();
                     res = new ResultWithToken(false, e.getMessage(), 0, null);
                 }
 
@@ -299,43 +276,27 @@ public class SplashActivity extends AppCompatActivity {
                 OkHttpClient client = new OkHttpClient();
 
                 MediaType mediaType = MediaType.parse("application/x-www-form-urlencoded");
-                RequestBody body = RequestBody.create(mediaType, "hash=" + f_hash + "&salt=" + f_salt +  "&pin=" + pin );
+                RequestBody body = RequestBody.create(mediaType, "name=TestName&hash=" + f_hash + "&salt=" + f_salt +  "&pin=" + pin );
                 Request request = new Request.Builder()
-                        .url(AppStrings.hostWithSlash + "archief/api/login/requestnewid.php")
+                        .url(MyHttp.API_NEWID)
                         .post(body)
                         .addHeader("Content-Type", "application/x-www-form-urlencoded")
                         .addHeader("Cache-Control", "no-cache")
                         .addHeader("Postman-Token", "20c81bb2-98c5-4cf3-b3ef-9dc741b33219")
                         .build();
 
-                ResultWithInt res;
+                ResultWithInt r;
 
                 try {
-                    final Response response = client.newCall(request).execute();
-                    runOnUiThread(new Runnable() {
-                        @Override
-                        public void run() {
-                            try {
-                                Toast.makeText(context, response.body().string(), Toast.LENGTH_LONG).show();
-                            } catch (IOException e) {
-                                e.printStackTrace();
-                            }
-                        }
-                    });
-                    res = new Gson().fromJson(response.body().string(), ResultWithInt.class);
-                }
-                catch (final IOException i){
-                    runOnUiThread(new Runnable() {
-                        @Override
-                        public void run() {
-                            Toast.makeText(context, i.getMessage(), Toast.LENGTH_LONG).show();
-                        }
-                    });
-                    res = new ResultWithInt(false, context.getResources().getString(R.string.error_network), 2, null);
+                    Response response = client.newCall(request).execute();
+                    r = new Gson().fromJson(response.body().string(), ResultWithInt.class);
+                } catch (Exception e) {
+                    e.printStackTrace();
+                    r = new ResultWithInt(false, "HTTP Error", -1, -1);
                 }
 
-                final ResultWithInt result = res;
-                ((TextView) findViewById(R.id.test)).setText( String.valueOf(result.hashCode()));
+                final ResultWithInt result = r;
+                ((TextView) findViewById(R.id.test)).setText( String.valueOf(result.getMessage()));
                 runOnUiThread(new Runnable() {
                     @Override
                     public void run() {

@@ -46,8 +46,8 @@ class ProductAdapter_Model_1  extends RecyclerView.Adapter<ProductAdapter_Model_
 
             }
         });
-        final Bitmap bitmap = ImageFactory.Load(context, category.getProducts()[fpos].getSourcePath());
-        fimageview.setImageBitmap(bitmap);
+        //final Bitmap bitmap = ImageFactory.Load(context, category.getProducts()[fpos].getSourcePath());
+        //fimageview.setImageBitmap(bitmap);
         t.setPriority(Thread.MAX_PRIORITY);
         t.start();
 
