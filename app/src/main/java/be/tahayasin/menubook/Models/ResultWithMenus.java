@@ -7,13 +7,13 @@ public class ResultWithMenus extends Result {
 
     @SerializedName("data")
     @Expose
-    private Menu[] data;
+    private HoofdModel[] data;
 
-    public Menu[] getData() {
+    public HoofdModel[] getData() {
         return data;
     }
 
-    public ResultWithMenus(boolean s, String m, int c, Menu[] menus) {
+    public ResultWithMenus(boolean s, String m, int c, HoofdModel[] menus) {
         super(s, m, c);
     }
 }

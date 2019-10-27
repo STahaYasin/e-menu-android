@@ -325,7 +325,7 @@ public class SplashActivity extends AppCompatActivity {
         Thread t = new Thread(new Runnable() {
             @Override
             public void run() {
-                HttpPostHandler http = new HttpPostHandler(context, AppStrings.hostWithSlash + "archief/api/android/menu.php");
+                HttpPostHandler http = new HttpPostHandler(context, MyHttp.API_MENU);
                 http.AddPostNameValuePair(new NameValuePair("session_id", resultWithToken.getData().getSession_id()));
                 http.AddPostNameValuePair(new NameValuePair("session_token", resultWithToken.getData().getSession_token()));
                 http.Excecute();
@@ -362,8 +362,6 @@ public class SplashActivity extends AppCompatActivity {
                             MenuHandler.storeMenu(context, result.getData());
                             ((Button) findViewById(R.id.button)).setEnabled(true);
                             ((ProgressBar) findViewById(R.id.progressBar)).setVisibility(View.INVISIBLE);
-
-
                         }
                         else{
                             Toast.makeText(context, "nok", Toast.LENGTH_LONG).show();

@@ -9,4 +9,5 @@ public class MyHttp {
     public final static String API_NEWID = API + "newid";
     public final static String API_SALT = API + "getsalt/";
     public final static String API_LOGIN = API + "login";
+    public final static String API_MENU = API + "get/menu";
 }

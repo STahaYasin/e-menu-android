@@ -42,8 +42,8 @@ public class CategoriesAdapter_Model_1 extends RecyclerView.Adapter<CategoriesAd
         Thread t = new Thread(new Runnable() {
             @Override
             public void run() {
-                //final Bitmap bitmap = ImageFactory.Load(context, categories[fpos].getImgsrc());
-                //fimageview.setImageBitmap(bitmap);
+                final Bitmap bitmap = ImageFactory.Load(context, categories[fpos].getImgsrc());
+                fimageview.setImageBitmap(bitmap);
             }
         });
 
