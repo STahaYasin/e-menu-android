@@ -20,8 +20,7 @@
             <ImageView
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:src="@color/cardview_shadow_start_color">
-
+                android:background="@drawable/detailexample">
             </ImageView>
         </LinearLayout>
         <LinearLayout
@@ -33,33 +32,96 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
-                android:layout_weight="4">
+                android:layout_weight="6">
 
             </LinearLayout>
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:layout_weight="1"
-                android:textColor="#112222"
-                android:id="@+id/name"
-                android:text="TextView" />
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:layout_weight="1"
-                android:id="@+id/price"
-                android:text="TextView" />
         </LinearLayout>
         </RelativeLayout>
     </LinearLayout>
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="7">
+        android:layout_weight="1"
+        android:background="#99000000"
+        android:weightSum="5"
+        android:orientation="horizontal">
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="3"
+            android:textSize="28sp"
+            android:textColor="@color/white"
+            android:gravity="center_vertical"
+            android:paddingLeft="5dp"
+            android:id="@+id/description"
+            android:text="TextView" />
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_weight="2"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="1"
+                    android:textSize="30dp"
+                    android:gravity="center"
+                    android:id="@+id/price"
+                    android:textColor="@color/white"
+                    android:text="TextView" />
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:weightSum="5"
+                android:orientation="horizontal">
+
+
+                <Button
+                    android:id="@+id/decrease"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1.7"
+                    android:gravity="center"
+                    android:text="-" />
+
+                <TextView
+                    android:id="@+id/integer_number"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:text="1"
+                    android:textColor="@color/white"
+                    android:layout_weight="1.6"
+                    android:textStyle="bold"
+                    android:gravity="center"
+                    android:textSize="16sp" />
+
+                <Button
+                    android:id="@+id/increase"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1.7"
+                    android:text="+" />
+            </LinearLayout>
+
+        </LinearLayout>
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="5">
+
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1">
+
         <Button
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:text="bestel nu">
+            android:text="bestel nu"
+            android:id="@+id/bestel">
 
         </Button>
     </LinearLayout>

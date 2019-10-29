@@ -5,7 +5,17 @@
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".Activities.Detail.DetailActivity">
-
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="horizontal">
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:src="@drawable/wood"
+            android:scaleType="centerCrop"
+            />
+    </LinearLayout>
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -26,8 +36,8 @@
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:id="@+id/product_back_button"
-            app:srcCompat="@drawable/back" />
+            android:id="@+id/detail_back_button"
+            app:srcCompat="@drawable/goback" />
 
         <TextView
             android:layout_width="0dp"
