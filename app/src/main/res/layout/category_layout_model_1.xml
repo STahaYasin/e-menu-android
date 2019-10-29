@@ -4,7 +4,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
+    android:layout_height="176dp"
     app:cardCornerRadius="0dp"
     android:layout_margin="5dp"
     android:elevation="5dp">
@@ -18,7 +18,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:adjustViewBounds="true"
-            android:src="@drawable/noimg"/>
+            android:src="@drawable/noimg" />
 
         <TextView
             android:id="@+id/category_layout_model_1_title"
@@ -26,20 +26,14 @@
             android:layout_height="wrap_content"
             android:background="#55151515"
             android:gravity="bottom"
-            android:padding="10dp"
+            android:padding="5dp"
             android:text=""
             android:textAlignment="center"
             android:textColor="#fff"
             android:textSize="18sp"
             android:textStyle="bold" />
 
-        <TextView
-            android:id="@+id/category_layout_model_1_price"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:textColor="#fff"
-            android:gravity="bottom"
-            android:text=""/>
+
 
     </RelativeLayout>
 
