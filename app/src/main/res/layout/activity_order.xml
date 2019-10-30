@@ -26,7 +26,7 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_weight="1.9"
+            android:layout_weight="1.5"
             android:background="#99000000"
             android:orientation="horizontal"
             android:padding="5dp"
@@ -36,8 +36,8 @@
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:id="@+id/product_back_button"
-                app:srcCompat="@drawable/back" />
+                android:id="@+id/order_go_back"
+                app:srcCompat="@drawable/goback" />
 
             <TextView
                 android:layout_width="0dp"
@@ -50,12 +50,6 @@
                 android:id="@+id/product_catagory_title"
                 android:text="Order"></TextView>
 
-            <ImageView
-                android:id="@+id/product_order_button"
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                app:srcCompat="@drawable/order2" />
 
 
 
@@ -65,64 +59,132 @@
             android:id="@+id/listview"
             android:layout_width="wrap_content"
             android:layout_height="0dp"
-            android:layout_weight="17.3"/>
+            android:layout_weight="15.5"/>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1.5">
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:text="bestel">
+            </Button>
+        </LinearLayout>
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_weight="1.5"
             android:orientation="horizontal"
-            android:padding="5dp"
+            android:paddingTop="7dp"
+            android:paddingLeft="5dp"
+            android:paddingRight="5dp"
+            android:layout_gravity=""
+
+
             android:background="#99000000"
-            android:weightSum="8">
-
-            <ImageView
-                android:id="@+id/imageView2"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                app:srcCompat="@drawable/language" />
+            android:weightSum="9">
 
             <LinearLayout
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:weightSum="2"
-                android:orientation="vertical">
+                android:layout_weight="3"
+                android:id="@+id/taal_button"
+                android:weightSum="6"
+                android:layout_marginRight="10dp"
+                android:layout_marginLeft="5dp"
+                android:background="@drawable/button_back"
+                android:orientation="horizontal">
                 <ImageView
-                    android:id="@+id/imageView5"
-                    android:layout_width="match_parent"
-                    android:layout_height="0dp"
-                    android:layout_weight="1"
-                    app:srcCompat="@drawable/wifi" />
+                    android:id="@+id/k"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="2"
+                    android:padding="5dp"
+                    app:srcCompat="@drawable/language" />
 
-                <ImageView
-                    android:id="@+id/imageView6"
-                    android:layout_width="match_parent"
-                    android:layout_height="0dp"
-                    android:layout_weight="1"
-                    app:srcCompat="@drawable/battery" />
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="4"
+                    android:text="Taal"
+                    android:gravity="center"
+
+                    android:textSize="18dp"
+                    android:textColor="@color/white"
+                    >
+                </TextView>
             </LinearLayout>
+
             <LinearLayout
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
-                android:layout_weight="4"></LinearLayout>
+                android:layout_weight="3"
+                android:id="@+id/service_button"
+                android:weightSum="6"
+                android:layout_marginRight="10dp"
+                android:background="@drawable/button_back"
+                android:orientation="horizontal">
+                <ImageView
+                    android:id="@+id/product_ober_button"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="2"
+                    android:padding="5dp"
+                    app:srcCompat="@drawable/ober" />
 
-            <ImageView
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="4"
+                    android:text="Service"
+                    android:gravity="center"
+                    android:textSize="18dp"
+                    android:textColor="@color/white"
+                    >
+
+                </TextView>
+                <!--                <ImageView-->
+                <!--                    android:id="@+id/battery"-->
+                <!--                    android:layout_width="match_parent"-->
+                <!--                    android:layout_height="0dp"-->
+                <!--                    android:layout_weight="1"-->
+                <!--                    app:srcCompat="@drawable/battery" />-->
+            </LinearLayout>
+
+            <LinearLayout
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:id="@+id/product_ober_button"
-                app:srcCompat="@drawable/ober" />
-            <ImageView
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:id="@+id/getReceipt"
-                app:srcCompat="@drawable/order" />
+                android:layout_weight="3"
+                android:id="@+id/rekening_button"
+                android:weightSum="6"
+                android:layout_marginRight="5dp"
+                android:background="@drawable/button_back"
+                android:orientation="horizontal">
+                <ImageView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/order"
+                    android:layout_weight="2"
+                    android:adjustViewBounds="true"
+                    android:gravity="center"
+                    android:padding="5dp"
+                    app:srcCompat="@drawable/order" />
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="4"
+                    android:text="Rekening"
+                    android:gravity="center"
 
+                    android:textSize="18dp"
+                    android:textColor="@color/white"
+                    >
+
+                </TextView>
+            </LinearLayout>
 
         </LinearLayout>
-
     </LinearLayout>
 
 </android.support.constraint.ConstraintLayout>

@@ -4,36 +4,42 @@
     android:orientation="vertical"
     android:background="@color/black_overlay"
     android:padding="10dp">
-
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    android:weightSum="10"
+    >
     <TextView
         android:id="@+id/name"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="0dp"
+        android:layout_weight="5"
+        android:layout_height="match_parent"
         android:layout_alignParentTop="true"
         android:text="Marshmallow"
-        android:textSize="20dp"
+        android:textSize="30dp"
         android:textAppearance="?android:attr/textAppearanceSmall"
         android:textColor="@android:color/white" />
 
-
     <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/price"
-        android:layout_below="@+id/name"
-        android:layout_marginTop="10dp"
-        android:textSize="15dp"
-        android:text="prijs"
-        android:textColor="@android:color/white" />
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="0dp"
+        android:layout_weight="2"
+        android:layout_height="match_parent"
         android:id="@+id/aantal"
-        android:layout_below="@+id/price"
-        android:layout_marginTop="10dp"
+        android:gravity="center"
+        android:textSize="25dp"
         android:text="aantal"
         android:textColor="@android:color/white" />
-
+    <TextView
+        android:layout_width="0dp"
+        android:layout_weight="3"
+        android:layout_height="match_parent"
+        android:id="@+id/price"
+        android:gravity="center"
+        android:textSize="25dp"
+        android:text="prijs"
+        android:textColor="@android:color/white" />
+</LinearLayout>
 
 
 </RelativeLayout>
