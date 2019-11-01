@@ -48,7 +48,7 @@
                 android:textColor="@color/white"
                 android:gravity="center"
                 android:id="@+id/title"
-                android:text="Categories"></TextView>
+                android:text="@string/Category"></TextView>
 
             <ImageView
                 android:id="@+id/product_order_button"

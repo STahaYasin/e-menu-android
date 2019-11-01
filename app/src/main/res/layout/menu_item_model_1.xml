@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    android:id="@+id/menu_item_model_1_lang"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="horizontal"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:padding="10dp"
+    android:layout_margin="10dp">
+
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginStart="15dp"
+        android:gravity="center">
+
+        <TextView
+            android:id="@+id/menu_item_model_1_name"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textAlignment="textStart"
+            android:textColor="#353535"
+            android:textSize="24sp"
+            android:textStyle="bold"
+            android:padding="5dp"
+            android:text="LANGUAGE NAME"/>
+
+    </LinearLayout>
+
+</LinearLayout>
