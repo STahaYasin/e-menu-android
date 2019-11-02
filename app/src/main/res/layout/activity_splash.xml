@@ -31,7 +31,14 @@
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_weight="1"
-            ></LinearLayout>
+            >
+            <ImageView
+                android:id="@+id/checkAgain"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:src="@android:drawable/ic_menu_rotate"
+                android:visibility="invisible"></ImageView>
+        </LinearLayout>
 
 
         <LinearLayout

@@ -13,32 +13,71 @@
     <TextView
         android:id="@+id/name"
         android:layout_width="0dp"
-        android:layout_weight="5"
+        android:layout_weight="3"
         android:layout_height="match_parent"
         android:layout_alignParentTop="true"
         android:text="Marshmallow"
         android:textSize="30dp"
         android:textAppearance="?android:attr/textAppearanceSmall"
         android:textColor="@android:color/white" />
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="4"
+        android:weightSum="7"
+        android:orientation="horizontal">
+        <TextView
+            android:layout_width="0dp"
+            android:layout_weight="2"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:textSize="25dp"
+            android:text="Aantal"
+            android:textColor="@android:color/white" />
 
+        <ImageView
+            android:id="@+id/decrease"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1.7"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:src="@android:drawable/presence_busy"/>
+
+        <TextView
+            android:id="@+id/aantal"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:text="1"
+            android:textColor="@color/white"
+            android:layout_weight="1.6"
+            android:textStyle="bold"
+            android:gravity="center"
+            android:textSize="16sp" />
+
+        <ImageView
+            android:id="@+id/increase"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1.7"
+            android:layout_gravity="center"
+            android:src="@android:drawable/ic_input_add"/>
+    </LinearLayout>
     <TextView
         android:layout_width="0dp"
         android:layout_weight="2"
-        android:layout_height="match_parent"
-        android:id="@+id/aantal"
-        android:gravity="center"
-        android:textSize="25dp"
-        android:text="aantal"
-        android:textColor="@android:color/white" />
-    <TextView
-        android:layout_width="0dp"
-        android:layout_weight="3"
         android:layout_height="match_parent"
         android:id="@+id/price"
         android:gravity="center"
         android:textSize="25dp"
         android:text="prijs"
         android:textColor="@android:color/white" />
+    <ImageView
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:id="@+id/delete"
+        android:layout_weight="1"
+        android:src="@android:drawable/ic_delete"/>
 </LinearLayout>
 
 

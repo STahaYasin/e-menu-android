@@ -67,11 +67,11 @@
             android:layout_weight="1.5">
 
             <Button
+                android:id="@+id/order"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:text="bestel">
-            </Button>
+                android:text="bestel"></Button>
         </LinearLayout>
 
         <LinearLayout
