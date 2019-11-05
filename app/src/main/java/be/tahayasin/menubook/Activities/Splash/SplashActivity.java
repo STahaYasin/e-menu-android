@@ -82,7 +82,7 @@ public class SplashActivity extends AppCompatActivity {
             requestNewId();
         }
         else{
-            Toast.makeText(this, "Get salt", Toast.LENGTH_LONG).show();
+            Toast.makeText(this, "Get salt" + String.valueOf(uid), Toast.LENGTH_LONG).show();
             getSalt();
         }
     }
@@ -347,7 +347,7 @@ public class SplashActivity extends AppCompatActivity {
                     res = new Gson().fromJson(a, ResultWithMenus.class);
                 }
                 catch (Exception e){
-                    res = new ResultWithMenus(false, "Json error", 2, null);
+                    res = new ResultWithMenus(false, b, 2, null);
                 }
 
                 final ResultWithMenus result = res;
@@ -359,12 +359,12 @@ public class SplashActivity extends AppCompatActivity {
 
                         if(result.getSuccess()){
                             Toast.makeText(context, "ok", Toast.LENGTH_LONG).show();
-                            MenuHandler.storeMenu(context, result.getData());
+                            MenuHandler.storeMenu(context, result.getData().getArray());
                             ((Button) findViewById(R.id.button)).setEnabled(true);
                             ((ProgressBar) findViewById(R.id.progressBar)).setVisibility(View.INVISIBLE);
                         }
                         else{
-                            Toast.makeText(context, "nok", Toast.LENGTH_LONG).show();
+                            Toast.makeText(context, result.getMessage(), Toast.LENGTH_LONG).show();
 
                         }
                     }

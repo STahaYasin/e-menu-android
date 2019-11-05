@@ -7,9 +7,9 @@ public class ResultWithMenus extends Result {
 
     @SerializedName("data")
     @Expose
-    private HoofdModel[] data;
+    private Shop data;
 
-    public HoofdModel[] getData() {
+    public Shop getData() {
         return data;
     }
 

@@ -9,7 +9,11 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import java.util.concurrent.ExecutionException;
+
+import be.tahayasin.menubook.Activities.MainActivity.MainActivity;
 import be.tahayasin.menubook.Handlers.ImageFactory;
 import be.tahayasin.menubook.Models.Category;
 import be.tahayasin.menubook.Interfaces.OnProductClickListener;
@@ -36,23 +40,36 @@ class ProductAdapter_Model_1  extends RecyclerView.Adapter<ProductAdapter_Model_
     public void onBindViewHolder(@NonNull ProductAdapter_Model_1.ItemHolder holder, final int position) {
         holder.title.setText(category.getProducts()[position].getName());
         holder.price.setText(category.getProducts()[position].getPrice());
-        final ImageView fimageview = holder.imageView;
+        final ImageView imageview = holder.imageView;
         final Integer fpos = position;
 
         Thread t = new Thread(new Runnable() {
             @Override
             public void run() {
+                final Bitmap bitmap;
+                try {
+                    bitmap = ImageFactory.Load(context, category.getProducts()[fpos].getImgId());
 
+                    clickListener.getActivity().runOnUiThread(new Runnable() {
+                        @Override
+                        public void run() {
+                            imageview.setImageBitmap(bitmap);
+                        }
+                    });
+                } catch (ExecutionException e) {
+                    e.printStackTrace();
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
 
             }
         });
-        //final Bitmap bitmap = ImageFactory.Load(context, category.getProducts()[fpos].getSourcePath());
-        //fimageview.setImageBitmap(bitmap);
+
         t.setPriority(Thread.MAX_PRIORITY);
         t.start();
 
 
-        fimageview.setOnClickListener(new View.OnClickListener() {
+        imageview.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
 

@@ -10,6 +10,8 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import java.util.concurrent.ExecutionException;
+
 import be.tahayasin.menubook.Handlers.ImageFactory;
 import be.tahayasin.menubook.Models.Category;
 import be.tahayasin.menubook.Interfaces.OnCategoryClickListener;
@@ -42,8 +44,15 @@ public class CategoriesAdapter_Model_1 extends RecyclerView.Adapter<CategoriesAd
         Thread t = new Thread(new Runnable() {
             @Override
             public void run() {
-                final Bitmap bitmap = ImageFactory.Load(context, categories[fpos].getImgsrc());
-                fimageview.setImageBitmap(bitmap);
+                final Bitmap bitmap;
+                try {
+                    bitmap = ImageFactory.Load(context, categories[fpos].getImgsrc());
+                    fimageview.setImageBitmap(bitmap);
+                } catch (ExecutionException e) {
+                    e.printStackTrace();
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
             }
         });
 

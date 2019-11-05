@@ -27,9 +27,9 @@ public class Product {
     @SerializedName("price")
     @Expose
     private String price;
-    @SerializedName("img_id")
+    @SerializedName("image_id")
     @Expose
-    private String imgId;
+    private int imgId;
     @SerializedName("source_path")
     @Expose
     private String sourcePath;
@@ -114,11 +114,11 @@ public class Product {
     }
 
     public String getImgId() {
-        return imgId;
+        return String.valueOf(imgId);
     }
 
     public void setImgId(String imgId) {
-        this.imgId = imgId;
+        this.imgId = Integer.valueOf(imgId);
     }
 
     public String getSourcePath() {

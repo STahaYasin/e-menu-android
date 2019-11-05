@@ -10,6 +10,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import be.tahayasin.menubook.Activities.Detail.DetailActivity;
@@ -25,7 +26,7 @@ public class ProductsActivity extends AppCompatActivity implements OnProductClic
     private Context context;
     private Menu menu;
     private Integer categoryIndex;
-    ImageView Wifi,battery,ober,order,backButton,receipt;
+    LinearLayout Wifi,battery,order, receipt, ober, backButton;
     ViewPager viewPager;
     SectionPagerAdapter sectionPagerAdapter;
 
@@ -103,6 +104,11 @@ public class ProductsActivity extends AppCompatActivity implements OnProductClic
         holderSingleton.setCategory(category);
         holderSingleton.setSelectedProductIndex(position);
         startActivity(new Intent(this, DetailActivity.class));
+    }
+
+    @Override
+    public ProductsActivity getActivity() {
+        return this;
     }
 
     public class SectionPagerAdapter extends FragmentPagerAdapter {
