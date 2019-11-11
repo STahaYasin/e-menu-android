@@ -10,7 +10,10 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import java.util.concurrent.ExecutionException;
+
 import be.tahayasin.menubook.Handlers.ImageFactory;
+import be.tahayasin.menubook.Models.HoofdModel;
 import be.tahayasin.menubook.Models.Menu;
 import be.tahayasin.menubook.Interfaces.OnLanguageSelectListener;
 import be.tahayasin.menubook.R;
@@ -19,12 +22,12 @@ public class LanguagesAdapter_Model_1 extends RecyclerView.Adapter<LanguagesAdap
 
     private Context context;
     private OnLanguageSelectListener languageSelectListener;
-    private Menu[] menus;
+    private HoofdModel[] hoofdModels;
 
-    public LanguagesAdapter_Model_1(Context context, OnLanguageSelectListener languageSelectListener, Menu[] menus){
+    public LanguagesAdapter_Model_1(Context context, OnLanguageSelectListener languageSelectListener, HoofdModel[] hoofdModels){
         this.context = context;
         this.languageSelectListener = languageSelectListener;
-        this.menus = menus;
+        this.hoofdModels = hoofdModels;
     }
 
     @NonNull
@@ -35,9 +38,9 @@ public class LanguagesAdapter_Model_1 extends RecyclerView.Adapter<LanguagesAdap
 
     @Override
     public void onBindViewHolder(@NonNull ItemHolder holder, int position) {
-        final Menu menu = menus[position];
+        final HoofdModel hoofdModel = hoofdModels[position];
 
-        holder.tv_name.setText(menu.getLanguage().getName());
+        holder.tv_name.setText(hoofdModel.getName());
 
         /*if(menu.getLanguage().isSupported_lang()){
             holder.iv_img.setImageDrawable(context.getResources().getDrawable(LanguagesAdapterManager.getSupportedLangImage(menu.getLanguage().getLanguage_id())));
@@ -46,19 +49,25 @@ public class LanguagesAdapter_Model_1 extends RecyclerView.Adapter<LanguagesAdap
             holder.iv_img.setImageBitmap(null);
         }*/
 
-        //holder.iv_img.setImageBitmap(ImageFactory.Load(context, ImageFactory.getMediumName(menu.getLanguage().getSourcePath())));
+        try {
+            holder.iv_img.setImageBitmap(ImageFactory.Load(context,hoofdModel.getSourcePath()));
+        } catch (ExecutionException e) {
+            e.printStackTrace();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
 
         holder.ll.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                languageSelectListener.OnLanguageSelected(menu);
+           //     languageSelectListener.OnLanguageSelected(menu);
             }
         });
     }
 
     @Override
     public int getItemCount() {
-        return menus.length;
+        return hoofdModels.length;
     }
 
     public class ItemHolder extends RecyclerView.ViewHolder{

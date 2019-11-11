@@ -54,6 +54,8 @@ public class SplashActivity extends AppCompatActivity {
                 openMain();
             }
         });
+//        if(MenuHandler.getMenu(this) != null)
+//            openMain();
 //        startLockTask();
 //
 //        setText();
@@ -276,7 +278,7 @@ public class SplashActivity extends AppCompatActivity {
                 OkHttpClient client = new OkHttpClient();
 
                 MediaType mediaType = MediaType.parse("application/x-www-form-urlencoded");
-                RequestBody body = RequestBody.create(mediaType, "name=TestName&hash=" + f_hash + "&salt=" + f_salt +  "&pin=" + pin );
+                RequestBody body = RequestBody.create(mediaType, "name=yarr&hash=" + f_hash + "&salt=" + f_salt +  "&pin=" + pin );
                 Request request = new Request.Builder()
                         .url(MyHttp.API_NEWID)
                         .post(body)
@@ -359,7 +361,7 @@ public class SplashActivity extends AppCompatActivity {
 
                         if(result.getSuccess()){
                             Toast.makeText(context, "ok", Toast.LENGTH_LONG).show();
-                            MenuHandler.storeMenu(context, result.getData().getArray());
+                            MenuHandler.storeMenu(context, result.getData());
                             ((Button) findViewById(R.id.button)).setEnabled(true);
                             ((ProgressBar) findViewById(R.id.progressBar)).setVisibility(View.INVISIBLE);
                         }

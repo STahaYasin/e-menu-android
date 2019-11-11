@@ -15,7 +15,7 @@ import com.google.gson.annotations.SerializedName;
         @SerializedName("code")
         @Expose
         private String code;
-        @SerializedName("source_path")
+        @SerializedName("image_id")
         @Expose
         private String sourcePath;
         @SerializedName("menus")

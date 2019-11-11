@@ -6,13 +6,16 @@ import android.content.SharedPreferences;
 import com.google.gson.Gson;
 
 import java.util.List;
+import java.util.logging.SocketHandler;
 
 import be.tahayasin.menubook.Models.HoofdModel;
 import be.tahayasin.menubook.Models.Menu;
+import be.tahayasin.menubook.Models.Shop;
 
 public class MenuHandler {
 
     public static String groupName = "menu";
+
     public static String menuName = "fullmenu";
 
 
@@ -24,27 +27,22 @@ public class MenuHandler {
 
         editor.apply();
     }
-    public static void storeMenu(Context context, HoofdModel[] menus){
-        storeMenu(context, new Gson().toJson(menus));
+    public static void storeMenu(Context context, Shop shop){
+        storeMenu(context, new Gson().toJson(shop));
     }
-    public static Menu[] getMenu(Context context){
+    public static HoofdModel[] getMenu(Context context){
         SharedPreferences sharedPreferences = context.getSharedPreferences(groupName, Context.MODE_PRIVATE);
         String a = sharedPreferences.getString(menuName, null);
-        HoofdModel[] hoofdModel = new Gson().fromJson(a, HoofdModel[].class);
-        List<Menu> itemslist =  hoofdModel[0].getMenus();
-
-        Menu[] menus = new Menu[itemslist.size()];
-        menus = itemslist.toArray(menus);
-        return menus;
-
-//        if(a == null) return new Menu[0];
-//        else{
-//            try{
-//                return new Gson().fromJson(a, Menu[].class);
-//            }
-//            catch (Exception e){
-//                return new Menu[0];
-//            }
-//        }
+        Shop shop = new Gson().fromJson(a, Shop.class);
+        HoofdModel[] hoofdModel = shop.getArray();
+        return hoofdModel;
     }
+    public static Shop getShop(Context context){
+        SharedPreferences sharedPreferences = context.getSharedPreferences(groupName, Context.MODE_PRIVATE);
+        String a = sharedPreferences.getString(menuName, null);
+        Shop shop = new Gson().fromJson(a, Shop.class);
+        return shop;
+    }
+
+
 }

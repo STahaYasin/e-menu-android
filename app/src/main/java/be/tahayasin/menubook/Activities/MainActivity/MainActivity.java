@@ -8,6 +8,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.WindowManager;
 
 import be.tahayasin.menubook.Activities.Catagory.CategoriesActivity;
+import be.tahayasin.menubook.Models.HoofdModel;
 import be.tahayasin.menubook.Models.Menu;
 import be.tahayasin.menubook.Handlers.MenuHandler;
 import be.tahayasin.menubook.MenuHolderSingleton;
@@ -18,7 +19,7 @@ public class MainActivity extends AppCompatActivity implements OnLanguageSelectL
 
     Fragment fragmentMenu;
 
-    private Menu[] menus;
+    private HoofdModel[] hoofdModels;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,11 +29,11 @@ public class MainActivity extends AppCompatActivity implements OnLanguageSelectL
         setTitle("Mevlana");
         setContentView(R.layout.activity_main);
 
-        menus = MenuHandler.getMenu(this);
+        hoofdModels = MenuHandler.getMenu(this);
 
         RecyclerView rv = findViewById(R.id.activity_main_languages_rv);
 
-        LanguagesAdapterManager.SetupRv(this, this, rv, menus);
+        LanguagesAdapterManager.SetupRv(this, this, rv, hoofdModels);
     }
 
     public void OnLanguageSelected(Menu menu){

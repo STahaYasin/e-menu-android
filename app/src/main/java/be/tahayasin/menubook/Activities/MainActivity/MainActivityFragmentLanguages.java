@@ -8,20 +8,21 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import be.tahayasin.menubook.Models.HoofdModel;
 import be.tahayasin.menubook.Models.Menu;
 import be.tahayasin.menubook.R;
 
 public class MainActivityFragmentLanguages extends Fragment {
 
     private Context context;
-    private Menu[] menus;
+    private HoofdModel[] menus;
     private MainActivity mainActivity;
 
     public MainActivityFragmentLanguages() {
         // Required empty public constructor
     }
 
-    public void Setup(Context context, MainActivity mainActivity, Menu[] menus){
+    public void Setup(Context context, MainActivity mainActivity, HoofdModel[] menus){
         this.context = context;
         this.menus = menus;
         this.mainActivity = mainActivity;

@@ -13,7 +13,7 @@ public class ResultWithMenus extends Result {
         return data;
     }
 
-    public ResultWithMenus(boolean s, String m, int c, HoofdModel[] menus) {
+    public ResultWithMenus(boolean s, String m, int c, Shop[] menus) {
         super(s, m, c);
     }
 }
