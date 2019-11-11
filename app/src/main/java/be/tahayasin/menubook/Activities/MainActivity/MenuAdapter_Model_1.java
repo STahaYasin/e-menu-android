@@ -10,24 +10,22 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
-import java.util.concurrent.ExecutionException;
-
-import be.tahayasin.menubook.Handlers.ImageFactory;
+import be.tahayasin.menubook.Interfaces.OnLanguageSelectListener;
+import be.tahayasin.menubook.Interfaces.OnMenuClickListener;
 import be.tahayasin.menubook.Models.HoofdModel;
 import be.tahayasin.menubook.Models.Menu;
-import be.tahayasin.menubook.Interfaces.OnLanguageSelectListener;
 import be.tahayasin.menubook.R;
 
-public class LanguagesAdapter_Model_1 extends RecyclerView.Adapter<LanguagesAdapter_Model_1.ItemHolder> {
+public class MenuAdapter_Model_1 extends RecyclerView.Adapter<MenuAdapter_Model_1.ItemHolder> {
 
     private Context context;
-    private OnLanguageSelectListener languageSelectListener;
-    private HoofdModel[] hoofdModels;
+    private OnMenuClickListener menuClickListener;
+    private Menu[] menus;
 
-    public LanguagesAdapter_Model_1(Context context, OnLanguageSelectListener languageSelectListener, HoofdModel[] hoofdModels){
+    public MenuAdapter_Model_1(Context context, OnMenuClickListener menuClickListener, Menu[] menus){
         this.context = context;
-        this.languageSelectListener = languageSelectListener;
-        this.hoofdModels = hoofdModels;
+        this.menuClickListener = menuClickListener;
+        this.menus = menus;
     }
 
     @NonNull
@@ -38,9 +36,9 @@ public class LanguagesAdapter_Model_1 extends RecyclerView.Adapter<LanguagesAdap
 
     @Override
     public void onBindViewHolder(@NonNull ItemHolder holder, int position) {
-        final HoofdModel hoofdModel = hoofdModels[position];
+        final Menu menu = menus[position];
 
-        holder.tv_name.setText(hoofdModel.getName());
+        holder.tv_name.setText(menu.getName());
 
         /*if(menu.getLanguage().isSupported_lang()){
             holder.iv_img.setImageDrawable(context.getResources().getDrawable(LanguagesAdapterManager.getSupportedLangImage(menu.getLanguage().getLanguage_id())));
@@ -49,19 +47,19 @@ public class LanguagesAdapter_Model_1 extends RecyclerView.Adapter<LanguagesAdap
             holder.iv_img.setImageBitmap(null);
         }*/
 
-            holder.iv_img.setImageResource(R.drawable.back);
+        holder.iv_img.setImageResource(R.drawable.wifi);
 
         holder.ll.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                languageSelectListener.OnLanguageSelected(hoofdModel.getMenus());
+                menuClickListener.OnMenuSelect(menu);
             }
         });
     }
 
     @Override
     public int getItemCount() {
-        return hoofdModels.length;
+        return menus.length;
     }
 
     public class ItemHolder extends RecyclerView.ViewHolder{

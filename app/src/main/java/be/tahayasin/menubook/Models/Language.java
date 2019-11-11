@@ -3,7 +3,9 @@ package be.tahayasin.menubook.Models;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
-public class Language {
+import be.tahayasin.menubook.Handlers.IHaveImageSource;
+
+public class Language implements IHaveImageSource {
     @SerializedName("id")
     @Expose
     private Integer id;
@@ -47,5 +49,10 @@ public class Language {
 
     public void setSourcePath(String sourcePath) {
         this.sourcePath = sourcePath;
+    }
+
+    @Override
+    public String getSourcePatch() {
+        return sourcePath;
     }
 }

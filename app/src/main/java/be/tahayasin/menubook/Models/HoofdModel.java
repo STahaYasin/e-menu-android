@@ -20,7 +20,7 @@ import com.google.gson.annotations.SerializedName;
         private String sourcePath;
         @SerializedName("menus")
         @Expose
-        private List<Menu> menus = null;
+        private Menu[] menus = null;
 
         public Integer getId() {
             return id;
@@ -54,11 +54,11 @@ import com.google.gson.annotations.SerializedName;
             this.sourcePath = sourcePath;
         }
 
-        public List<Menu> getMenus() {
+        public Menu[] getMenus() {
             return menus;
         }
 
-        public void setMenus(List<Menu> menus) {
+        public void setMenus(Menu[] menus) {
             this.menus = menus;
         }
     }
