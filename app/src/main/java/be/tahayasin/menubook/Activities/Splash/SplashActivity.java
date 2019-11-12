@@ -330,6 +330,8 @@ public class SplashActivity extends AppCompatActivity {
                 HttpPostHandler http = new HttpPostHandler(context, MyHttp.API_MENU);
                 http.AddPostNameValuePair(new NameValuePair("session_id", resultWithToken.getData().getSession_id()));
                 http.AddPostNameValuePair(new NameValuePair("session_token", resultWithToken.getData().getSession_token()));
+                SharedPrefencesManager.setSessionId(context,resultWithToken.getData().getSession_id());
+                SharedPrefencesManager.setSessionKey(context,resultWithToken.getData().getSession_token());
                 http.Excecute();
 
                 String a;

@@ -40,10 +40,10 @@ public class ProductsActivity extends AppCompatActivity implements OnProductClic
         this.menu = holder.getMenu();
         this.categoryIndex = holder.getSelectedCategoryIndex();
 
-        ober = findViewById(R.id.product_ober_button);
-        order = findViewById(R.id.product_order_button);
+        ober = findViewById(R.id.service_button);
+       // order = findViewById(R.id.order);
         backButton = findViewById(R.id.product_back_button);
-        receipt = findViewById(R.id.getReceipt);
+        receipt = findViewById(R.id.rekening_button);
 
         FragmentManager fragmentManager = getSupportFragmentManager();
         sectionPagerAdapter = new SectionPagerAdapter(fragmentManager, context, this, menu);
@@ -82,12 +82,12 @@ public class ProductsActivity extends AppCompatActivity implements OnProductClic
             }
         });
 
-        order.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                startActivity(new Intent(context, OrderActivity.class));
-            }
-        });
+//        order.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                startActivity(new Intent(context, OrderActivity.class));
+//            }
+//        });
 
         receipt.setOnClickListener(new View.OnClickListener() {
             @Override

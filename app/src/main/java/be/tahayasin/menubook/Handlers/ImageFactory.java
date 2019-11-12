@@ -1,6 +1,7 @@
 package be.tahayasin.menubook.Handlers;
 
 import android.content.Context;
+import android.content.res.Resources;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.AsyncTask;
@@ -21,17 +22,14 @@ import java.util.concurrent.ExecutionException;
 
 import be.tahayasin.menubook.Constants.AppStrings;
 import be.tahayasin.menubook.Constants.MyHttp;
+import be.tahayasin.menubook.R;
+import be.tahayasin.menubook.SharedPrefencesManager;
 
 public class ImageFactory {
 
-    public static String getMediumName(String s){
-        return "" + s;
-    }
-    public static String getSmallName(String s){
-        return "small" + s;
-    }
-
     public static void Save(Context context, String name, Bitmap bitmap){
+        if (bitmap == null)
+            return;
         FileOutputStream fileOutputStream;
         try {
             fileOutputStream = context.openFileOutput(name, Context.MODE_PRIVATE);
@@ -56,29 +54,44 @@ public class ImageFactory {
         } catch(Exception e) {
             e.printStackTrace();
         }
-        if (bitmap == null && !isImageSource){
+        if (!isImageSource){
             bitmap = new DownloadImage(context).execute(name).get();
+            //bitmap = downloadImageBitmap(context,name);
         }
         else {
             bitmap = new DownloadImageFromSource(context).execute(name).get();
         }
 
+        Save(context,name,bitmap);
+
         return bitmap;
     }
-
-    private static Bitmap downloadImageBitmap(String image_id){
+    public static Integer getLanguageId(String id){
+        switch (id){
+            case "nl":
+                return R.drawable.nl;
+            case "fr":
+                return R.drawable.fr;
+            case "en":
+                return R.drawable.gb;
+            case  "tr":
+                return R.drawable.tr;
+            default:
+                return R.drawable.tr;
+        }
+    }
+    private static Bitmap downloadImageBitmap(Context context,String image_id){
         Bitmap bitmap = null;
         try {
             OkHttpClient client = new OkHttpClient();
 
             // TODO vervang session_id en session_token
-            String session_id = "1bdf4577d3fb3708a1f797de8c60b804";
-            String session_token = "1a3d6c836457b879c2831cb6b5ff02f08708905246664eb127875fbbc0f0efe0e741322865f4651590a20001b91473d8b79d3beb863594de6b3e17451c107eaeb537ab8f30c4a17993e89c134a9d161f33495707218f6ec6e6514d207e0c6466ac883eb69003c72fa40f0da91c0bec54152342aaf74ef7b2465e4f533b581638";
-
+            String session_id = SharedPrefencesManager.getSessionId(context);
+            String session_token = SharedPrefencesManager.getSessionKey(context);
             MediaType mediaType = MediaType.parse("application/x-www-form-urlencoded");
             RequestBody body = RequestBody.create(mediaType, "session_id=" + session_id + "&session_token=" + session_token);
             Request request = new Request.Builder()
-                    .url(MyHttp.API + image_id)
+                    .url(MyHttp.NenN + image_id)
                     .post(body)
                     .addHeader("content-type", "application/x-www-form-urlencoded")
                     .addHeader("cache-control", "no-cache")
@@ -114,13 +127,12 @@ public class ImageFactory {
                 OkHttpClient client = new OkHttpClient();
 
                 // TODO vervang session_id en session_token
-                String session_id = "1bdf4577d3fb3708a1f797de8c60b804";
-                String session_token = "1a3d6c836457b879c2831cb6b5ff02f08708905246664eb127875fbbc0f0efe0e741322865f4651590a20001b91473d8b79d3beb863594de6b3e17451c107eaeb537ab8f30c4a17993e89c134a9d161f33495707218f6ec6e6514d207e0c6466ac883eb69003c72fa40f0da91c0bec54152342aaf74ef7b2465e4f533b581638";
-
+                String session_id = SharedPrefencesManager.getSessionId(context);
+                String session_token = SharedPrefencesManager.getSessionKey(context);
                 MediaType mediaType = MediaType.parse("application/x-www-form-urlencoded");
                 RequestBody body = RequestBody.create(mediaType, "session_id=" + session_id + "&session_token=" + session_token);
                 Request request = new Request.Builder()
-                        .url("http://tablet.e-menu.be/image/n_n/" + image_id)
+                        .url(MyHttp.NenN + image_id)
                         .post(body)
                         .addHeader("content-type", "application/x-www-form-urlencoded")
                         .addHeader("cache-control", "no-cache")
@@ -154,6 +166,7 @@ public class ImageFactory {
         }
 
     }
+
     private static class DownloadImageFromSource extends AsyncTask<String, Void, Bitmap> {
         private String TAG = "DownloadImage";
         Context context = null;
@@ -186,4 +199,6 @@ public class ImageFactory {
         }
 
     }
+
+
 }

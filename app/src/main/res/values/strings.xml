@@ -4,6 +4,7 @@
     <string name="dialog_msg_auth">Please enter pin</string>
     <string name="error_network">Some fatal error occurred, please restart the app</string>
 <string name="category">Categories</string>
+    <string name="selectLanguage">Select Language</string>
     <string name="title_activity_download_menu">DownloadMenuActivity</string>
     <string name="dummy_button">Dummy Button</string>
     <string name="dummy_content">DUMMY\nCONTENT</string>

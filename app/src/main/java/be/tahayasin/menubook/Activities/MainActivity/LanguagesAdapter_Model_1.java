@@ -37,7 +37,7 @@ public class LanguagesAdapter_Model_1 extends RecyclerView.Adapter<LanguagesAdap
     }
 
     @Override
-    public void onBindViewHolder(@NonNull ItemHolder holder, int position) {
+    public void onBindViewHolder(@NonNull final ItemHolder holder, int position) {
         final HoofdModel hoofdModel = hoofdModels[position];
 
         holder.tv_name.setText(hoofdModel.getName());
@@ -49,12 +49,12 @@ public class LanguagesAdapter_Model_1 extends RecyclerView.Adapter<LanguagesAdap
             holder.iv_img.setImageBitmap(null);
         }*/
 
-            holder.iv_img.setImageResource(R.drawable.back);
+            holder.iv_img.setImageResource(ImageFactory.getLanguageId(hoofdModel.getCode()));
 
         holder.ll.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                languageSelectListener.OnLanguageSelected(hoofdModel.getMenus());
+                languageSelectListener.OnLanguageSelected(hoofdModel.getMenus(),hoofdModel.getCode());
             }
         });
     }

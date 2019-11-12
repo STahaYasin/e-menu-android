@@ -52,7 +52,7 @@ public class OrderAdapter extends ArrayAdapter<CartObject> implements View.OnCli
             Double totaal = Double.parseDouble(menuItem.getProduct().getPrice()) * menuItem.getAantal();
             TextView prijs = view.findViewById(R.id.price);
             TextView aantal = view.findViewById(R.id.aantal);
-            prijs.setText("€"+totaal.toString());
+            prijs.setText("€ "+totaal.toString());
             //  aantal.setText(menuItem.getAantal());
         }
         return view;

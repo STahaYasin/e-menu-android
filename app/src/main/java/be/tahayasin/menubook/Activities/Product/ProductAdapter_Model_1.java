@@ -65,7 +65,7 @@ class ProductAdapter_Model_1  extends RecyclerView.Adapter<ProductAdapter_Model_
             }
         });
 
-        t.setPriority(Thread.MAX_PRIORITY);
+        t.setPriority(Thread.MIN_PRIORITY);
         t.start();
 
 

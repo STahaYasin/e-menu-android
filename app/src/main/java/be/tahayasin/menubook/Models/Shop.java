@@ -16,6 +16,18 @@ public class Shop {
     @Expose
     private HoofdModel[] array;
 
+    public String getLogo_source() {
+        return logo_source;
+    }
+
+    public void setLogo_source(String logo_source) {
+        this.logo_source = logo_source;
+    }
+
+    @SerializedName("logo_source")
+    @Expose
+    private String logo_source;
+
     public int getShop_id() {
         return shop_id;
     }
