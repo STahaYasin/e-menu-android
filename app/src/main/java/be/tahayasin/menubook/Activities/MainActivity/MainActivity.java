@@ -2,13 +2,17 @@ package be.tahayasin.menubook.Activities.MainActivity;
 
 import android.content.Intent;
 import android.content.res.Resources;
+import android.os.Handler;
 import android.support.v4.app.Fragment;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.RecyclerView;
 import android.util.DisplayMetrics;
+import android.view.MotionEvent;
+import android.view.View;
 import android.view.WindowManager;
 import android.widget.ImageView;
+import android.widget.Toast;
 
 import java.util.Locale;
 import java.util.concurrent.ExecutionException;
@@ -31,6 +35,8 @@ public class MainActivity extends AppCompatActivity implements OnLanguageSelectL
     private HoofdModel[] hoofdModels;
     RecyclerView rv;
     ImageView logo;
+    Handler mHandler=new Handler();
+    Runnable mRunnable,timeRunnable;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,6 +50,15 @@ public class MainActivity extends AppCompatActivity implements OnLanguageSelectL
         hoofdModels = MenuHandler.getMenu(this);
         Shop shop = MenuHandler.getShop(this);
 
+        timeRunnable=new Runnable(){
+            @Override
+            public void run() {
+                finish();
+
+            }
+        };
+
+        logo.setOnTouchListener(buttonOnTouchListener);
 //        try {
 ////            logo.setImageBitmap(ImageFactory.Load(this,shop.getLogo_source()));
 //        } catch (ExecutionException e) {
@@ -56,6 +71,22 @@ public class MainActivity extends AppCompatActivity implements OnLanguageSelectL
 
         LanguagesAdapterManager.SetupRv(this, this, rv, hoofdModels);
     }
+
+    private View.OnTouchListener buttonOnTouchListener = new View.OnTouchListener() {
+        @Override
+        public boolean onTouch(View v, MotionEvent event) {
+            switch ( event.getAction() ) {
+                case MotionEvent.ACTION_DOWN:
+                    mHandler.postDelayed(timeRunnable, 3000);
+                    break;
+                case MotionEvent.ACTION_UP:
+                    mHandler.removeCallbacks(timeRunnable);
+                    break;
+            }
+            return true;
+        }
+    };
+
 
     public void OnLanguageSelected(Menu[] menus, String languageID){
         Resources res = getResources();
