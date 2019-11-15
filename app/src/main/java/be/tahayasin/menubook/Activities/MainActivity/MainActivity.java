@@ -44,13 +44,13 @@ public class MainActivity extends AppCompatActivity implements OnLanguageSelectL
         hoofdModels = MenuHandler.getMenu(this);
         Shop shop = MenuHandler.getShop(this);
 
-        try {
-            logo.setImageBitmap(ImageFactory.Load(this,shop.getLogo_source()));
-        } catch (ExecutionException e) {
-            e.printStackTrace();
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
+//        try {
+////            logo.setImageBitmap(ImageFactory.Load(this,shop.getLogo_source()));
+//        } catch (ExecutionException e) {
+//            e.printStackTrace();
+//        } catch (InterruptedException e) {
+//            e.printStackTrace();
+//        }
 
         rv = findViewById(R.id.activity_main_languages_rv);
 

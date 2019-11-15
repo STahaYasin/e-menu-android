@@ -4,10 +4,10 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="be.tahayasin.menubook.KioskActivity">
+    tools:context="be.tahayasin.menubook.Activities.Kiosk.KioskActivity">
 
     <Button
-        android:id="@+id/startlock"
+        android:id="@+id/btStartLockTask"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="gfbgfbngngn"
@@ -22,7 +22,7 @@
         android:layout_height="wrap_content"
         android:text="fgfhrhtynrrtn"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toRightOf="@id/startlock"
+        app:layout_constraintLeft_toRightOf="@id/btStartLockTask"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 </android.support.constraint.ConstraintLayout>

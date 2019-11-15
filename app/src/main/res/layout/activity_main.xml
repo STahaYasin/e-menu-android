@@ -26,7 +26,7 @@
                 <ImageView
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
-                    android:src="@drawable/friet"
+                    android:src="@drawable/white_logo"
                     android:id="@+id/logo"
                     android:layout_weight="3"
                     android:padding="5mm"

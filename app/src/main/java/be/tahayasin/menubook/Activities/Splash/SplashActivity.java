@@ -54,8 +54,8 @@ public class SplashActivity extends AppCompatActivity {
                 openMain();
             }
         });
-//        if(MenuHandler.getMenu(this) != null)
-//            openMain();
+        if(MenuHandler.getMenu(this).length >= 1)
+            openMain();
 //        startLockTask();
 //
 //        setText();
