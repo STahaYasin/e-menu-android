@@ -48,6 +48,61 @@ public class Product {
     @SerializedName("order")
     @Expose
     private String order;
+    @SerializedName("has_1_1")
+    @Expose
+    private Boolean has1_1;
+    @SerializedName("has_4_3")
+    @Expose
+    private Boolean has4_3;
+    @SerializedName("has_16_9")
+    @Expose
+    private Boolean has16_9;
+    @SerializedName("has_3_1")
+    @Expose
+    private Boolean has3_1;
+    @SerializedName("has_9_16")
+    @Expose
+    private Boolean has9_16;
+
+    public Boolean getHas4_3() {
+        return has4_3;
+    }
+
+    public void setHas4_3(Boolean has4_3) {
+        this.has4_3 = has4_3;
+    }
+
+    public Boolean getHas16_9() {
+        return has16_9;
+    }
+
+    public void setHas16_9(Boolean has16_9) {
+        this.has16_9 = has16_9;
+    }
+
+    public Boolean getHas3_1() {
+        return has3_1;
+    }
+
+    public void setHas3_1(Boolean has3_1) {
+        this.has3_1 = has3_1;
+    }
+
+    public Boolean getHas9_16() {
+        return has9_16;
+    }
+
+    public void setHas9_16(Boolean has9_16) {
+        this.has9_16 = has9_16;
+    }
+
+    public Boolean getHas1_1() {
+        return has1_1;
+    }
+
+    public void setHas1_1(Boolean has1_1) {
+        this.has1_1 = has1_1;
+    }
 
     public Integer getProductId() {
         return productId;

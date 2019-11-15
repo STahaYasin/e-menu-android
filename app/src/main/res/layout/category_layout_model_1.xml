@@ -18,13 +18,13 @@
                 android:scaleType="fitXY"
                 android:layout_height="wrap_content"
                 android:adjustViewBounds="true"
-                android:src="@drawable/battery" />
+                android:src="@drawable/noimage" />
     </LinearLayout>
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        android:layout_gravity="bottom"
+        android:layout_gravity="top"
         android:background="#55151515">
         <TextView
             android:id="@+id/category_layout_model_1_title"

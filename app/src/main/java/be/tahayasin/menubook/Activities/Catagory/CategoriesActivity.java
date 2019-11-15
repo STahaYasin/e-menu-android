@@ -5,9 +5,11 @@ import android.app.Dialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.res.Resources;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.RecyclerView;
+import android.util.DisplayMetrics;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.Button;
@@ -17,6 +19,8 @@ import android.widget.ListView;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import java.util.Locale;
 
 import be.tahayasin.menubook.Activities.Order.OrderActivity;
 import be.tahayasin.menubook.Handlers.MenuHandler;
@@ -52,11 +56,18 @@ public class CategoriesActivity extends AppCompatActivity implements OnCategoryC
                 HoofdModel clickedItem = (HoofdModel) parent.getItemAtPosition(position);
                 String clickedCountryName = clickedItem.getName();
                 Toast.makeText(getApplicationContext(),clickedCountryName,Toast.LENGTH_SHORT).show();
+
+                Resources res = getResources();
+                DisplayMetrics dm = res.getDisplayMetrics();
+                android.content.res.Configuration conf = res.getConfiguration();
+                conf.setLocale(new Locale(clickedItem.getCode()));
+                res.updateConfiguration(conf, dm);
+
                }
 
             @Override
             public void onNothingSelected(AdapterView<?> parent) {
-
+                recreate();
             }
         });
         MenuHolderSingleton holder = MenuHolderSingleton.getInstance();

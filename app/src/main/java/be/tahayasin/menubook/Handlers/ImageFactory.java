@@ -39,10 +39,10 @@ public class ImageFactory {
             e.printStackTrace();
         }
     }
-    public static Bitmap Load(Context context, String name) throws ExecutionException, InterruptedException{
-       return Load(context,name,false);
+    public static Bitmap Load(Context context,String url, String name) throws ExecutionException, InterruptedException{
+       return Load(context,url,name,false);
     }
-    public static Bitmap Load(Context context, String name, Boolean isImageSource) throws ExecutionException, InterruptedException {
+    public static Bitmap Load(Context context, String url, String name, Boolean isImageSource) throws ExecutionException, InterruptedException {
         if (name == null)
             return null;
         FileInputStream fileInputStream;
@@ -55,11 +55,11 @@ public class ImageFactory {
             e.printStackTrace();
         }
         if (!isImageSource){
-            bitmap = new DownloadImage(context).execute(name).get();
-            //bitmap = downloadImageBitmap(context,name);
+            //bitmap = new DownloadImage(context).execute(url,name).get();
+            bitmap = downloadImageBitmap(context,url,name);
         }
         else {
-            bitmap = new DownloadImageFromSource(context).execute(name).get();
+            bitmap = new DownloadImageFromSource(context).execute(MyHttp.SenS + name).get();
         }
 
         Save(context,name,bitmap);
@@ -74,13 +74,13 @@ public class ImageFactory {
                 return R.drawable.fr;
             case "en":
                 return R.drawable.gb;
-            case  "tr":
+            case "tr":
                 return R.drawable.tr;
             default:
                 return R.drawable.tr;
         }
     }
-    private static Bitmap downloadImageBitmap(Context context,String image_id){
+    private static Bitmap downloadImageBitmap(Context context,String URL,String image_id){
         Bitmap bitmap = null;
         try {
             OkHttpClient client = new OkHttpClient();
@@ -91,7 +91,7 @@ public class ImageFactory {
             MediaType mediaType = MediaType.parse("application/x-www-form-urlencoded");
             RequestBody body = RequestBody.create(mediaType, "session_id=" + session_id + "&session_token=" + session_token);
             Request request = new Request.Builder()
-                    .url(MyHttp.NenN + image_id)
+                    .url(URL + image_id)
                     .post(body)
                     .addHeader("content-type", "application/x-www-form-urlencoded")
                     .addHeader("cache-control", "no-cache")
@@ -112,6 +112,7 @@ public class ImageFactory {
             bitmap = null;
         }
 
+        Save(context,image_id,bitmap);
         return bitmap;
     }
     private static class DownloadImage extends AsyncTask<String, Void, Bitmap> {
@@ -121,7 +122,7 @@ public class ImageFactory {
         public DownloadImage(Context context){
             this.context = context;
         }
-        private Bitmap downloadImageBitmap(String image_id) {
+        private Bitmap downloadImageBitmap(String URL, String image_id) {
             Bitmap bitmap = null;
             try {
                 OkHttpClient client = new OkHttpClient();
@@ -132,7 +133,7 @@ public class ImageFactory {
                 MediaType mediaType = MediaType.parse("application/x-www-form-urlencoded");
                 RequestBody body = RequestBody.create(mediaType, "session_id=" + session_id + "&session_token=" + session_token);
                 Request request = new Request.Builder()
-                        .url(MyHttp.NenN + image_id)
+                        .url(URL + image_id)
                         .post(body)
                         .addHeader("content-type", "application/x-www-form-urlencoded")
                         .addHeader("cache-control", "no-cache")
@@ -157,7 +158,7 @@ public class ImageFactory {
 
         @Override
         protected Bitmap doInBackground(String... params) {
-            return downloadImageBitmap(params[0]);
+            return downloadImageBitmap(params[0],params[1]);
         }
 
         protected void onPostExecute(Bitmap result) {

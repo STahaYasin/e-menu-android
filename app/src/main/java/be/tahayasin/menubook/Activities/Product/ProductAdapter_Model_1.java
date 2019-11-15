@@ -14,6 +14,7 @@ import android.widget.Toast;
 import java.util.concurrent.ExecutionException;
 
 import be.tahayasin.menubook.Activities.MainActivity.MainActivity;
+import be.tahayasin.menubook.Constants.MyHttp;
 import be.tahayasin.menubook.Handlers.ImageFactory;
 import be.tahayasin.menubook.Models.Category;
 import be.tahayasin.menubook.Interfaces.OnProductClickListener;
@@ -48,7 +49,14 @@ class ProductAdapter_Model_1  extends RecyclerView.Adapter<ProductAdapter_Model_
             public void run() {
                 final Bitmap bitmap;
                 try {
-                    bitmap = ImageFactory.Load(context, category.getProducts()[fpos].getImgId());
+                    String URI = "";
+                    if(category.getProducts()[position].getHas1_1()){
+                        URI = MyHttp.NenN;
+                    }
+                    else{
+                        URI = MyHttp.NenN;
+                    }
+                    bitmap = ImageFactory.Load(context, URI ,category.getProducts()[fpos].getImgId());
 
                     clickListener.getActivity().runOnUiThread(new Runnable() {
                         @Override

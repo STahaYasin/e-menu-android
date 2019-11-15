@@ -26,7 +26,7 @@ class KioskActivity : AppCompatActivity() {
     private lateinit var mDevicePolicyManager: DevicePolicyManager
 
     companion object {
-        const val LOCK_ACTIVITY_KEY = "be.tahayasin.menubook.Activities.Kiosk.KioskActivity"
+        const val LOCK_ACTIVITY_KEY = "be.tahayasin.menubook.Activities.Kiosk"
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {

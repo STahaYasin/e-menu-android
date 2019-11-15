@@ -77,7 +77,7 @@ public class MainActivity extends AppCompatActivity implements OnLanguageSelectL
         public boolean onTouch(View v, MotionEvent event) {
             switch ( event.getAction() ) {
                 case MotionEvent.ACTION_DOWN:
-                    mHandler.postDelayed(timeRunnable, 3000);
+                    mHandler.postDelayed(timeRunnable, 5000);
                     break;
                 case MotionEvent.ACTION_UP:
                     mHandler.removeCallbacks(timeRunnable);
