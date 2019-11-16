@@ -51,7 +51,7 @@ class ProductAdapter_Model_1  extends RecyclerView.Adapter<ProductAdapter_Model_
                 try {
                     String URI = "";
                     if(category.getProducts()[position].getHas1_1()){
-                        URI = MyHttp.NenN;
+                        URI = MyHttp.een_een;
                     }
                     else{
                         URI = MyHttp.NenN;

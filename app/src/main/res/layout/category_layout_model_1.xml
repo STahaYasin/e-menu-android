@@ -25,7 +25,8 @@
         android:layout_height="wrap_content"
         android:orientation="vertical"
         android:layout_gravity="top"
-        android:background="#55151515">
+
+        android:background="#99000000">
         <TextView
             android:id="@+id/category_layout_model_1_title"
             android:layout_width="match_parent"

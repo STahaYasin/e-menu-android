@@ -27,7 +27,7 @@
         android:orientation="horizontal"
         android:layout_gravity="top"
         android:weightSum="5"
-        android:background="#99151515">
+        android:background="#99000000">
         <TextView
             android:id="@+id/product_layout_model_1_title"
             android:layout_width="0dp"
